@@ -29,4 +29,5 @@ while [ -e "CFN_NagOutput/$fname" ]; do
   fname="$prefix$num.$ext"          
 done
 
+mkdir -p CFN_NagOutput
 cfn_nag_scan --input-path $1 --output-format json > "CFN_NagOutput/$fname"

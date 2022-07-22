@@ -27,4 +27,5 @@ while [ -e "SnykOutput/$fname" ]; do
   fname="$prefix$num.$ext"          
 done
 
+mkdir -p SnykOutput
 snyk test --json > "SnykOutput/$fname"
