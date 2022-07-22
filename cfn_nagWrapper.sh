@@ -15,7 +15,7 @@
 #     sudo gem install cfn-nag
 
 
-prefix="${1:-CFN_NagOutput_}"         
+prefix="CFN_NagOutput_"         
 number=1                           
 ext="json"                         
 
