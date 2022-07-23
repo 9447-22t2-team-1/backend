@@ -13,7 +13,7 @@
 #     snyk auth [<API_TOKEN>]
 
 
-prefix="${1:-SnykOutput_}"         
+prefix="SnykOutput_"         
 number=1                           
 ext="json"                         
 
@@ -28,4 +28,4 @@ while [ -e "SnykOutput/$fname" ]; do
 done
 
 mkdir -p SnykOutput
-snyk test --json > "SnykOutput/$fname"
+snyk test --all-projects --org=snyk-apps --severity-threshold=high --json > "SnykOutput/$fname"
