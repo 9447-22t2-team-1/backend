@@ -29,5 +29,7 @@ while [ -e "CFN_NagOutput/$fname" ]; do
   fname="$prefix$num.$ext"          
 done
 
+
+#Takes one argument; the path to the desired directory to be scanned.
 mkdir -p CFN_NagOutput
 cfn_nag_scan --input-path $1 --output-format json > "CFN_NagOutput/$fname"
