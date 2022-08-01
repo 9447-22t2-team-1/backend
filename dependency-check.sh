@@ -1,0 +1,1 @@
+../dependency-check/bin/dependency-check.sh
