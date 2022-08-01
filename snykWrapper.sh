@@ -27,5 +27,7 @@ while [ -e "SnykOutput/$fname" ]; do
   fname="$prefix$num.$ext"          
 done
 
+snyk auth f2e2f17a-4a38-44a2-98f2-00ffe3c664bc
 mkdir -p SnykOutput
-snyk test --all-projects --org=snyk-apps --severity-threshold=high --json > "SnykOutput/$fname"
+#Takes 1 input, a address to a public GitHub Repository
+snyk test $1 --json > "SnykOutput/$fname"
