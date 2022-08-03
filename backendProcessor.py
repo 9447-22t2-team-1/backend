@@ -9,7 +9,9 @@ import time
 
 def main():
     # Take in the encoded string, decode and split up
-    passedList = json.loads(base64.b64decode(sys.argv[1]))
+    file1 = open("/home/ubuntu/backend/pipeline.txt", "r") 
+
+    passedList = json.loads(base64.b64decode(file1.read()))
     buildList = passedList['Build']
     testList = passedList['Test']
     deployList = passedList['Deploy']
@@ -21,7 +23,7 @@ def main():
     scanCounter = stageRunner(deployList, scanCounter)
 
     # Append file with the findings
-    file1 = open("Output/PipelineOutput.txt", "a+")  # append mode
+    file1 = open("/home/ubuntu/backend/Output/PipelineOutput.txt", "a+")  # append mode
     file1.write("===================================================================================\n")
     file1.write("PIPELINE IS COMPLETE\n")
     file1.write (str(scanCounter) +" SUCCESSFUL SERVICES RUN\n")
@@ -39,7 +41,7 @@ def stageRunner(stage, scanCounter):
         extractedData = i['data']
 
         # Help formats the output file
-        file1 = open("Output/PipelineOutput.txt", "a+")  # append mode
+        file1 = open("/home/ubuntu/backend/Output/PipelineOutput.txt", "a+")  # append mode
         file1.write("=========================================================================\n")
         file1.write("SCAN NUMBER "+ str(scanCounter - 1) +"\n")
         file1.write("=========================================================================\n")
@@ -52,7 +54,7 @@ def stageRunner(stage, scanCounter):
             
         # Run Snyk
         if extractedID == '0':
-            file1 = open("Output/PipelineOutput.txt", "a+")  # append mode
+            file1 = open("/home/ubuntu/backend/Output/PipelineOutput.txt", "a+")  # append mode
             file1.write("---SNYK---\n")
             file1.close()
 
@@ -61,14 +63,14 @@ def stageRunner(stage, scanCounter):
             print("SNYK COMPLETE")
         # Run CodeDeploy
         elif extractedID == '1':
-            file1 = open("Output/PipelineOutput.txt", "a+")  # append mode
+            file1 = open("/home/ubuntu/backend/Output/PipelineOutput.txt", "a+")  # append mode
             file1.write("---CodeDeploy---\n")
             file1.close()
             # TODO
             print("CODEDEPLOY COMPLETE")
         # Run Dependency Check
         elif extractedID == '2':
-            file1 = open("Output/PipelineOutput.txt", "a+")  # append mode
+            file1 = open("/home/ubuntu/backend/Output/PipelineOutput.txt", "a+")  # append mode
             file1.write("---DependencyCheck---\n")
             file1.close()
 
@@ -76,7 +78,7 @@ def stageRunner(stage, scanCounter):
             print("DEPENDENCY CHECK SCAN COMPLETE")
         # Run CFN-NAG
         elif extractedID == '3':
-            file1 = open("Output/PipelineOutput.txt", "a+")  # append mode
+            file1 = open("/home/ubuntu/backend/Output/PipelineOutput.txt", "a+")  # append mode
             file1.write("---CFN-NAG---\n")
             file1.close()
 
@@ -84,14 +86,14 @@ def stageRunner(stage, scanCounter):
             print("CFN-NAG COMPLETE")
         # Run ISM
         elif extractedID == '4':
-            file1 = open("Output/PipelineOutput.txt", "a+")  # append mode
+            file1 = open("/home/ubuntu/backend/Output/PipelineOutput.txt", "a+")  # append mode
             file1.write("---ISM---\n")
             file1.close()
             #TODO
             print("ISM SCAN COMPLETE")
 
         # Help formats the output file
-        file1 = open("Output/PipelineOutput.txt", "a+")  # append mode
+        file1 = open("/home/ubuntu/backend/Output/PipelineOutput.txt", "a+")  # append mode
         file1.write("=========================================================================\n")
         file1.close()
         scanCounter += 1
