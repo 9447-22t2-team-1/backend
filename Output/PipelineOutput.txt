@@ -1,0 +1,499 @@
+===================================================================================
+PIPELINE IS COMPLETE
+6 SUCCESSFUL SERVICES RUN
+===================================================================================
+=========================================================================
+SCAN NUMBER 0
+=========================================================================
+---SNYK---
+{
+  "ok": false,
+  "error": "Couldn't find the requested package or version",
+  "path": "https://github.com/9447-22t2-team-1/IAC-Samplec"
+}
+=========================================================================
+=========================================================================
+SCAN NUMBER 1
+=========================================================================
+---CodeDeploy---
+=========================================================================
+=========================================================================
+SCAN NUMBER 2
+=========================================================================
+---DependencyCheck---
+[INFO] Checking for updates
+[INFO] Skipping NVD check since last check was within 4 hours.
+[INFO] Skipping RetireJS update since last update was within 24 hours.
+[INFO] Check for updates complete (17 ms)
+[INFO] 
+
+Dependency-Check is an open source tool performing a best effort analysis of 3rd party dependencies; false positives and false negatives may exist in the analysis performed by the tool. Use of the tool and the reporting provided constitutes acceptance for use in an AS IS condition, and there are NO warranties, implied or otherwise, with regard to the analysis or its use. Any use of the tool and the reporting provided is at the user’s risk. In no event shall the copyright holder or OWASP be held liable for any damages whatsoever arising out of or in connection with the use of this tool, the analysis performed, or the resulting report.
+
+
+   About ODC: https://jeremylong.github.io/DependencyCheck/general/internals.html
+   False Positives: https://jeremylong.github.io/DependencyCheck/general/suppression.html
+
+💖 Sponsor: https://github.com/sponsors/jeremylong
+
+
+[INFO] Analysis Started
+[INFO] Finished File Name Analyzer (0 seconds)
+[INFO] Finished Dependency Merging Analyzer (0 seconds)
+[INFO] Finished Version Filter Analyzer (0 seconds)
+[INFO] Finished Hint Analyzer (0 seconds)
+[INFO] Created CPE Index (2 seconds)
+[INFO] Finished CPE Analyzer (2 seconds)
+[INFO] Finished False Positive Analyzer (0 seconds)
+[INFO] Finished NVD CVE Analyzer (0 seconds)
+[INFO] Finished Sonatype OSS Index Analyzer (0 seconds)
+[INFO] Finished Vulnerability Suppression Analyzer (0 seconds)
+[INFO] Finished Dependency Bundling Analyzer (0 seconds)
+[INFO] Analysis Complete (2 seconds)
+[INFO] Writing report to: /home/peter/Uni/COMP9447/backend/./dependency-check-report.html
+=========================================================================
+=========================================================================
+SCAN NUMBER 3
+=========================================================================
+---CFN-NAG---
+[
+  {
+    "filename": "cfn_nag_sandbox_folder/s3.json",
+    "file_results": {
+      "failure_count": 0,
+      "violations": [
+        {
+          "id": "W51",
+          "name": "MissingBucketPolicyRule",
+          "type": "WARN",
+          "message": "S3 bucket should likely have a bucket policy",
+          "logical_resource_ids": [
+            "s3Bucket"
+          ],
+          "line_numbers": [
+            92
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "W35",
+          "name": "S3BucketAccessLoggingRule",
+          "type": "WARN",
+          "message": "S3 Bucket should have access logging configured",
+          "logical_resource_ids": [
+            "s3Bucket"
+          ],
+          "line_numbers": [
+            92
+          ],
+          "element_types": [
+            "resource"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "cfn_nag_sandbox_folder/json-outputs/out.json",
+    "file_results": {
+      "failure_count": 1,
+      "violations": [
+        {
+          "id": "FATAL",
+          "name": "system",
+          "type": "FAIL",
+          "message": "Illegal cfn - no Resources",
+          "logical_resource_ids": [
+
+          ],
+          "line_numbers": [
+
+          ],
+          "element_types": [
+
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "cfn_nag_sandbox_folder/json-outputs/aws-example.json",
+    "file_results": {
+      "failure_count": 1,
+      "violations": [
+        {
+          "id": "F1000",
+          "name": "SecurityGroupMissingEgressRule",
+          "type": "FAIL",
+          "message": "Missing egress rule means all traffic is allowed outbound.  Make this explicit if it is desired configuration",
+          "logical_resource_ids": [
+            "InstanceSecurityGroup"
+          ],
+          "line_numbers": [
+            187
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "W36",
+          "name": "SecurityGroupRuleDescriptionRule",
+          "type": "WARN",
+          "message": "Security group rules without a description obscure their purpose and may lead to bad practices in ensuring they only allow traffic from the ports and sources/destinations required.",
+          "logical_resource_ids": [
+            "InstanceSecurityGroup"
+          ],
+          "line_numbers": [
+            187
+          ],
+          "element_types": [
+            "resource"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "cfn_nag_sandbox_folder/json-outputs/pretty.json",
+    "file_results": {
+      "failure_count": 1,
+      "violations": [
+        {
+          "id": "FATAL",
+          "name": "system",
+          "type": "FAIL",
+          "message": "Illegal cfn - no Resources",
+          "logical_resource_ids": [
+
+          ],
+          "line_numbers": [
+
+          ],
+          "element_types": [
+
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "cfn_nag_sandbox_folder/iam.json",
+    "file_results": {
+      "failure_count": 1,
+      "violations": [
+        {
+          "id": "FATAL",
+          "name": "system",
+          "type": "FAIL",
+          "message": "Basic CloudFormation syntax error:[#<Kwalify::ValidationError: [/Resources/iamPolicyEc2/Properties] key 'PolicyName:' is required.>, #<Kwalify::ValidationError: [/Resources/iamPolicyEc2/Properties/PolicyName] value required but none.>]",
+          "logical_resource_ids": [
+
+          ],
+          "line_numbers": [
+
+          ],
+          "element_types": [
+
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "cfn_nag_sandbox_folder/s3.yml",
+    "file_results": {
+      "failure_count": 0,
+      "violations": [
+        {
+          "id": "W51",
+          "name": "MissingBucketPolicyRule",
+          "type": "WARN",
+          "message": "S3 bucket should likely have a bucket policy",
+          "logical_resource_ids": [
+            "s3Bucket"
+          ],
+          "line_numbers": [
+            27
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "W35",
+          "name": "S3BucketAccessLoggingRule",
+          "type": "WARN",
+          "message": "S3 Bucket should have access logging configured",
+          "logical_resource_ids": [
+            "s3Bucket"
+          ],
+          "line_numbers": [
+            27
+          ],
+          "element_types": [
+            "resource"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "cfn_nag_sandbox_folder/snyk-poc.yml",
+    "file_results": {
+      "failure_count": 5,
+      "violations": [
+        {
+          "id": "F40",
+          "name": "IamManagedPolicyPassRoleWildcardResourceRule",
+          "type": "FAIL",
+          "message": "IAM managed policy should not allow a * resource with PassRole action",
+          "logical_resource_ids": [
+            "iamAppInstancePolicy"
+          ],
+          "line_numbers": [
+            140
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "F5",
+          "name": "IamManagedPolicyWildcardActionRule",
+          "type": "FAIL",
+          "message": "IAM managed policy should not allow * action",
+          "logical_resource_ids": [
+            "iamAppInstancePolicy"
+          ],
+          "line_numbers": [
+            140
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "W13",
+          "name": "IamManagedPolicyWildcardResourceRule",
+          "type": "WARN",
+          "message": "IAM managed policy should not allow * resource",
+          "logical_resource_ids": [
+            "iamAppInstancePolicy"
+          ],
+          "line_numbers": [
+            140
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "W51",
+          "name": "MissingBucketPolicyRule",
+          "type": "WARN",
+          "message": "S3 bucket should likely have a bucket policy",
+          "logical_resource_ids": [
+            "applicationBucket"
+          ],
+          "line_numbers": [
+            156
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "F27",
+          "name": "RDSDBInstanceStorageEncryptedRule",
+          "type": "FAIL",
+          "message": "RDS DBInstance should have StorageEncrypted enabled",
+          "logical_resource_ids": [
+            "Database"
+          ],
+          "line_numbers": [
+            167
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "F80",
+          "name": "RDSInstanceDeletionProtectionRule",
+          "type": "FAIL",
+          "message": "RDS instance should have deletion protection enabled",
+          "logical_resource_ids": [
+            "Database"
+          ],
+          "line_numbers": [
+            167
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "F22",
+          "name": "RDSInstancePubliclyAccessibleRule",
+          "type": "FAIL",
+          "message": "RDS instance should not be publicly accessible",
+          "logical_resource_ids": [
+            "Database"
+          ],
+          "line_numbers": [
+            167
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "W28",
+          "name": "ResourceWithExplicitNameRule",
+          "type": "WARN",
+          "message": "Resource found with an explicit name, this disallows updates that require replacement of this resource",
+          "logical_resource_ids": [
+            "iamAppInstancePolicy",
+            "iamApplicationInstanceRole",
+            "Database"
+          ],
+          "line_numbers": [
+            140,
+            117,
+            167
+          ],
+          "element_types": [
+            "resource",
+            "resource",
+            "resource"
+          ]
+        },
+        {
+          "id": "W35",
+          "name": "S3BucketAccessLoggingRule",
+          "type": "WARN",
+          "message": "S3 Bucket should have access logging configured",
+          "logical_resource_ids": [
+            "applicationBucket"
+          ],
+          "line_numbers": [
+            156
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "W41",
+          "name": "S3BucketEncryptionSetRule",
+          "type": "WARN",
+          "message": "S3 Bucket should have encryption option set",
+          "logical_resource_ids": [
+            "applicationBucket"
+          ],
+          "line_numbers": [
+            156
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "W31",
+          "name": "S3BucketPublicReadAclRule",
+          "type": "WARN",
+          "message": "S3 Bucket likely should not have a public read acl",
+          "logical_resource_ids": [
+            "applicationBucket"
+          ],
+          "line_numbers": [
+            156
+          ],
+          "element_types": [
+            "resource"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "cfn_nag_sandbox_folder/iam.yml",
+    "file_results": {
+      "failure_count": 2,
+      "violations": [
+        {
+          "id": "F39",
+          "name": "IamPolicyPassRoleWildcardResourceRule",
+          "type": "FAIL",
+          "message": "IAM policy should not allow * resource with PassRole action",
+          "logical_resource_ids": [
+            "iamPolicyEc2"
+          ],
+          "line_numbers": [
+            38
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "F4",
+          "name": "IamPolicyWildcardActionRule",
+          "type": "FAIL",
+          "message": "IAM policy should not allow * action",
+          "logical_resource_ids": [
+            "iamPolicyEc2"
+          ],
+          "line_numbers": [
+            38
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "W12",
+          "name": "IamPolicyWildcardResourceRule",
+          "type": "WARN",
+          "message": "IAM policy should not allow * resource",
+          "logical_resource_ids": [
+            "iamPolicyEc2"
+          ],
+          "line_numbers": [
+            38
+          ],
+          "element_types": [
+            "resource"
+          ]
+        },
+        {
+          "id": "W28",
+          "name": "ResourceWithExplicitNameRule",
+          "type": "WARN",
+          "message": "Resource found with an explicit name, this disallows updates that require replacement of this resource",
+          "logical_resource_ids": [
+            "iamRoleEc2"
+          ],
+          "line_numbers": [
+            17
+          ],
+          "element_types": [
+            "resource"
+          ]
+        }
+      ]
+    }
+  }
+]
+=========================================================================
+=========================================================================
+SCAN NUMBER 4
+=========================================================================
+---ISM---
+=========================================================================
+===================================================================================
+PIPELINE IS COMPLETE
+6 SUCCESSFUL SERVICES RUN
+===================================================================================
