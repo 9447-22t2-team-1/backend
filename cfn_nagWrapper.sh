@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# This script is a wrapper for calling CFN-NAG against a target directory
-# The first argument is the path to the desired directory
+# This script is a wrapper for calling CFN-NAG against a target repository
+# The first argument is a path to the public GitHub repository
 
 # This assumes that CFN-NAG is installed on the host machine
 # This can be accomplished with the following steps
@@ -14,22 +14,7 @@
 # Then install CFN-NAG
 #     sudo gem install cfn-nag
 
+#Takes 1 input, the addres to the GitHub Repository
 
-prefix="CFN_NagOutput_"         
-number=1                           
-ext="json"                         
-
-printf -v num "%03d" "$number"      
-fname="$prefix$num.$ext"            
-
-while [ -e "CFN_NagOutput/$fname" ]; do 
-  echo "abc"
-  number=$((number + 1))            
-  printf -v num "%03d" "$number"    
-  fname="$prefix$num.$ext"          
-done
-
-
-#Takes one argument; the path to the desired directory to be scanned.
-mkdir -p CFN_NagOutput
-cfn_nag_scan --input-path $1 --output-format json > "CFN_NagOutput/$fname"
+git clone $1 cfn_nag_sandbox_folder
+cfn_nag_scan --input-path cfn_nag_sandbox_folder --output-format json >> "Output/PipelineOutput.txt"
