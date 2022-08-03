@@ -5,11 +5,37 @@
 #sudo apt install awscli
 # aws configure
 
-git clone $1 code_build_sandbox_folder
+if [ $# -ne 1 ]
+then
+    echo "usage: $(basename "$0") <github repo link>" >&2
+    exit 1
+fi
 
-#Takes 1 input, the addres to the GitHub Repository
-#TODO
-# need function from Sunny
-for i in /code_build_sandbox_folder/*; do
+repo_link="$1"
+repo_name='code_build_sandbox_folder'
 
-aws cloudformation deploy --stack-name github-aws-cicd --template-file pipeline.yaml --capabilities CAPABILITY_NAMED_IAM --parameter-overrides GithubRepository=github-aws-cicd
+if ! git clone "$repo_link" 
+then
+    echo "error cloning $repo_link" > &2
+    exit 2
+fi
+
+for file in "$repo_name"/*
+do
+    # check if the folder is empty
+    if [ "$file" = "${repo_name}/*" ] && [ ! -f "${repo_name}/*" ]
+    then
+        break
+    fi
+
+    if echo "$file" | grep -E '\.(yaml|yml)$' > /dev/null
+    then
+        # aws cloudformation deploy --stack-name github-aws-cicd --template-file "$file"  --capabilities CAPABILITY_NAMED_IAM --parameter-overrides GithubRepository=github-aws-cicd
+        # exit with the status of the aws command
+        exit $?
+    fi
+done
+
+echo 'could not find cloud formation template ending with .yaml or .yml' >&2
+exit 3
+
