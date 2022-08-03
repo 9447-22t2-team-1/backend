@@ -14,12 +14,13 @@ fi
 repo_link="$1"
 repo_name='code_build_sandbox_folder'
 
-if ! git clone "$repo_link" 
+if ! git clone "$repo_link" "$repo_name"
 then
-    echo "error cloning $repo_link" > &2
+    echo "error cloning $repo_link" >&2
     exit 2
 fi
 
+# find the first .yaml or .yml file in the top level of the repo and assume it is the cf template
 for file in "$repo_name"/*
 do
     # check if the folder is empty
@@ -30,7 +31,7 @@ do
 
     if echo "$file" | grep -E '\.(yaml|yml)$' > /dev/null
     then
-        # aws cloudformation deploy --stack-name github-aws-cicd --template-file "$file"  --capabilities CAPABILITY_NAMED_IAM --parameter-overrides GithubRepository=github-aws-cicd
+        aws cloudformation deploy --stack-name github-aws-cicd --template-file "$file"  --capabilities CAPABILITY_NAMED_IAM --parameter-overrides GithubRepository=github-aws-cicd
         # exit with the status of the aws command
         exit $?
     fi
