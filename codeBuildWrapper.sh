@@ -34,6 +34,7 @@ do
         aws cloudformation deploy --stack-name github-aws-cicd --template-file "$file"  --capabilities CAPABILITY_NAMED_IAM --parameter-overrides GithubRepository=github-aws-cicd
         # exit with the status of the aws command
         exit $?
+        # output is the repository being stored in a S3 showing a working pipeline
     fi
 done
 

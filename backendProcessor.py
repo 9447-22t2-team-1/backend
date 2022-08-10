@@ -61,13 +61,13 @@ def stageRunner(stage, scanCounter):
             time.sleep(1)
             subprocess.run(["./snykWrapper.sh", extractedData])
             print("SNYK COMPLETE")
-        # Run CodeDeploy
+        # Run CodeBuild
         elif extractedID == '1':
             file1 = open("/home/ubuntu/backend/Output/PipelineOutput.txt", "a+")  # append mode
-            file1.write("---CodeDeploy---\n")
+            file1.write("---CodeBuild---\n")
             file1.close()
-            # TODO
-            print("CODEDEPLOY COMPLETE")
+            subprocess.run(["./codeBuildWrapper.sh", extractedData])
+            print("CODEBUILD COMPLETE")
         # Run Dependency Check
         elif extractedID == '2':
             file1 = open("/home/ubuntu/backend/Output/PipelineOutput.txt", "a+")  # append mode
